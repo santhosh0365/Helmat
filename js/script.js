@@ -132,3 +132,16 @@
   $('.preloader').fadeOut();
   });
   })(jQuery);
+const video = document.getElementById('video');
+const observer = new IntersectionObserver((entries, observer) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && entry.intersectionRatio >= 0.7) {
+      video.play();
+    } else {
+      video.pause();
+    }
+  });
+}, {
+  threshold: 0.7
+});
+observer.observe(video);
